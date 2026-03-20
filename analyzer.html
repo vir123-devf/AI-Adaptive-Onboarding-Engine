@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Adaptive Onboarding Engine - Resume Analyzer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header .icon {
+            font-size: 40px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #d4edda;
+            color: #155724;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #e0e0e0;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #f5c6cb;
+        }
+
+        .results-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .skills-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-card h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .skill-meta {
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            gap: 15px;
+        }
+
+        .gap-item {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ff6b6b;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .gap-skill {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .gap-severity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .severity-bar {
+            flex: 1;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .severity-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd93d 0%, #ff6b6b 100%);
+            transition: width 0.3s;
+        }
+
+        .pathway-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pathway-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .course-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .course-info {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .course-skills {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .course-skills strong {
+            font-size: 12px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-section {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .summary-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .course-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pathway-trace {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .pathway-trace-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .pathway-trace-item:last-child {
+            border-bottom: none;
+        }
+
+        .chart-placeholder {
+            background: #f0f0f0;
+            height: 250px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <span class="icon">🎓</span>
+                AI-Adaptive Onboarding Engine
+            </h1>
+            <p>Analyze your resume against job descriptions and get personalized learning pathways</p>
+            <div class="status-badge" id="serverStatus">✓ Server: Checking...</div>
+        </header>
+
+        <div class="main-grid">
+            <!-- Resume Input -->
+            <div class="card">
+                <h2>📄 Your Resume</h2>
+                <textarea id="resumeText" placeholder="Paste your resume or professional background here... Example: Python developer with 5 years AWS experience..." style="height: 300px;"></textarea>
+                <button class="btn-secondary" onclick="loadSampleResume()">Load Sample Resume</button>
+            </div>
+
+            <!-- Job Description Input -->
+            <div class="card">
+                <h2>💼 Job Description</h2>
+                <textarea id="jdText" placeholder="Paste the job description here... Example: We need a Senior Engineer with Docker and Kubernetes expertise..." style="height: 300px;"></textarea>
+                <button class="btn-secondary" onclick="loadSampleJD()">Load Sample Job</button>
+            </div>
+        </div>
+
+        <!-- Analysis Button -->
+        <div class="card">
+            <div class="button-group">
+                <button class="btn-primary" onclick="analyzeResume()">🚀 Analyze Resume & Get Pathway</button>
+                <button class="btn-secondary" onclick="clearAll()">Clear All</button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Analyzing resume and generating learning pathway...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error hidden" id="errorMessage"></div>
+
+        <!-- Results Section -->
+        <div id="resultsContainer" class="hidden">
+            <!-- Summary Statistics -->
+            <div class="summary-stats" id="summaryStats"></div>
+
+            <!-- Candidate Skills -->
+            <div class="skills-card">
+                <h3>👤 Your Skills</h3>
+                <div id="candidateSkills"></div>
+            </div>
+
+            <!-- Required Skills -->
+            <div class="skills-card">
+                <h3>🎯 Required Skills</h3>
+                <div id="requiredSkills"></div>
+            </div>
+
+            <!-- Skill Gaps -->
+            <div class="skills-card">
+                <h3>⚠️ Skill Gaps (Priority Order)</h3>
+                <div id="skillGaps"></div>
+            </div>
+
+            <!-- Learning Pathway -->
+            <div class="pathway-section">
+                <h3>📚 Recommended Learning Pathway</h3>
+                <div id="learningPathway"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check server status on page load
+        window.addEventListener('load', function() {
+            checkServerStatus();
+        });
+
+        async function checkServerStatus() {
+            try {
+                const response = await fetch('http://localhost:8000/health');
+                if (response.ok) {
+                    document.getElementById('serverStatus').textContent = '✓ Server: Online & Ready';
+                    document.getElementById('serverStatus').style.background = '#d4edda';
+                    document.getElementById('serverStatus').style.color = '#155724';
+                } else {
+                    setStatusOffline();
+                }
+            } catch (error) {
+                setStatusOffline();
+            }
+        }
+
+        function setStatusOffline() {
+            document.getElementById('serverStatus').textContent = '✗ Server: Offline';
+            document.getElementById('serverStatus').style.background = '#f8d7da';
+            document.getElementById('serverStatus').style.color = '#721c24';
+        }
+
+        function loadSampleResume() {
+            document.getElementById('resumeText').value = `Python Developer
+            
+Skills & Experience:
+- 5+ years of professional Python development
+- Advanced proficiency in JavaScript, React, and Node.js
+- Hands-on experience with AWS (EC2, S3, Lambda, RDS)
+- Git version control and GitHub
+- RESTful API design and implementation
+- SQL and database optimization
+- Docker containerization
+- Agile/Scrum methodologies
+
+Education:
+BS Computer Science
+
+Notable Projects:
+- Built microservices architecture using Python FastAPI
+- Managed cloud infrastructure on AWS
+- Led team of 3 junior developers`;
+        }
+
+        function loadSampleJD() {
+            document.getElementById('jdText').value = `Senior Full-Stack Engineer
+
+We are seeking a Senior Full-Stack Engineer to lead our platform development.
+
+Required Skills:
+- 7+ years of full-stack development experience
+- Expertise in Docker & Kubernetes for containerization
+- Machine Learning/TensorFlow knowledge
+- Advanced Python and JavaScript
+- Microservices architecture
+- CI/CD pipeline design
+- Cloud infrastructure (AWS/GCP/Azure)
+- Leadership and mentoring skills
+
+Responsibilities:
+- Design and implement scalable systems
+- Lead technical decisions
+- Mentor junior engineers
+- Collaborate with product teams`;
+        }
+
+        async function analyzeResume() {
+            const resumeText = document.getElementById('resumeText').value.trim();
+            const jdText = document.getElementById('jdText').value.trim();
+
+            // Validation
+            if (!resumeText) {
+                showError('Please enter your resume or background information');
+                return;
+            }
+            if (!jdText) {
+                showError('Please enter the job description');
+                return;
+            }
+
+            // Show loading, hide results
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('resultsContainer').classList.add('hidden');
+            document.getElementById('errorMessage').classList.add('hidden');
+
+            try {
+                const response = await fetch('http://localhost:8000/api/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        resume_text: resumeText,
+                        jd_text: jdText,
+                        max_hours: 40.0
+                    })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.detail || `HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+                displayResults(data);
+            } catch (error) {
+                showError(`Analysis failed: ${error.message}`);
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        function displayResults(data) {
+            // Summary stats
+            const candidateCount = data.candidate_profile.skills.length;
+            const requiredCount = data.required_profile.skills.length;
+            const gapCount = data.skill_gaps.length;
+            const courseCount = data.pathway.courses.length;
+
+            document.getElementById('summaryStats').innerHTML = `
+                <div class="stat-box">
+                    <div class="stat-number">${candidateCount}</div>
+                    <div class="stat-label">Your Skills</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">${requiredCount}</div>
+                    <div class="stat-label">Required Skills</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">${gapCount}</div>
+                    <div class="stat-label">Skill Gaps</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">${courseCount}</div>
+                    <div class="stat-label">Recommended Courses</div>
+                </div>
+            `;
+
+            // Candidate Skills
+            if (data.candidate_profile.skills.length > 0) {
+                document.getElementById('candidateSkills').innerHTML = data.candidate_profile.skills
+                    .map(skill => `
+                        <div class="skill-item">
+                            <div class="skill-name">${skill.skill}</div>
+                            <div class="skill-meta">
+                                <span>${skill.category}</span>
+                                <span>${skill.proficiency}</span>
+                            </div>
+                        </div>
+                    `).join('');
+            } else {
+                document.getElementById('candidateSkills').innerHTML = '<p class="no-results">No skills detected</p>';
+            }
+
+            // Required Skills
+            if (data.required_profile.skills.length > 0) {
+                document.getElementById('requiredSkills').innerHTML = data.required_profile.skills
+                    .map(skill => `
+                        <div class="skill-item">
+                            <div class="skill-name">${skill.skill}</div>
+                            <div class="skill-meta">
+                                <span>${skill.category}</span>
+                                <span>${skill.proficiency}</span>
+                            </div>
+                        </div>
+                    `).join('');
+            } else {
+                document.getElementById('requiredSkills').innerHTML = '<p class="no-results">No skills identified</p>';
+            }
+
+            // Skill Gaps
+            if (data.skill_gaps.length > 0) {
+                document.getElementById('skillGaps').innerHTML = data.skill_gaps
+                    .sort((a, b) => b.severity - a.severity)
+                    .map(gap => `
+                        <div class="gap-item">
+                            <div class="gap-skill">${gap.skill}</div>
+                            <div class="gap-severity">
+                                <span>Severity:</span>
+                                <div class="severity-bar">
+                                    <div class="severity-fill" style="width: ${gap.severity * 100}%"></div>
+                                </div>
+                                <span>${(gap.severity * 100).toFixed(0)}%</span>
+                            </div>
+                            ${gap.closest_match ? `<div style="font-size: 12px; color: #666; margin-top: 5px;">Similar to: ${gap.closest_match}</div>` : ''}
+                        </div>
+                    `).join('');
+            } else {
+                document.getElementById('skillGaps').innerHTML = '<p class="no-results">Great! No skill gaps detected</p>';
+            }
+
+            // Learning Pathway
+            let pathwayHTML = '';
+            if (data.pathway.courses.length > 0) {
+                pathwayHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <strong>Total Duration:</strong> ${data.pathway.total_hours} hours
+                    </div>
+                    <div class="course-container">
+                        ${data.pathway.courses.map(course => `
+                            <div class="course-card">
+                                <div class="course-title">${course.title}</div>
+                                <div class="course-info">
+                                    <strong>Duration:</strong> ${course.duration_hours} hours<br>
+                                    <strong>Level:</strong> ${course.difficulty}
+                                </div>
+                                <div class="course-skills">
+                                    <strong>Skills Covered:</strong>
+                                    ${course.skills_covered.map(skill => `<div class="skill-tag">${skill}</div>`).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else {
+                pathwayHTML = '<p class="no-results">No courses needed to cover gaps</p>';
+            }
+
+            if (data.pathway.reasoning_trace && data.pathway.reasoning_trace.length > 0) {
+                pathwayHTML += `
+                    <div class="pathway-trace">
+                        <strong style="display: block; margin-bottom: 10px;">How we built your pathway:</strong>
+                        ${data.pathway.reasoning_trace.map(reason => `
+                            <div class="pathway-trace-item">• ${reason}</div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            document.getElementById('learningPathway').innerHTML = pathwayHTML;
+
+            // Show results
+            document.getElementById('resultsContainer').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+
+        function clearAll() {
+            document.getElementById('resumeText').value = '';
+            document.getElementById('jdText').value = '';
+            document.getElementById('resultsContainer').classList.add('hidden');
+            document.getElementById('errorMessage').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

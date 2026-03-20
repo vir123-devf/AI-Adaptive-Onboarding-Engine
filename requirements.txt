@@ -1,0 +1,30 @@
+# Core FastAPI and server
+fastapi==0.135.1
+uvicorn==0.42.0
+pydantic==2.12.5
+pydantic-core==2.41.5
+
+# Anthropic API
+anthropic==0.86.0
+httpx==0.28.1
+
+# Environment and utilities
+python-dotenv==1.0.0
+python-multipart==0.0.6
+
+# ML and Transformers
+torch==2.0.1
+transformers==4.30.2
+sentence-transformers==2.2.2
+scikit-learn==1.2.2
+
+# Data processing
+numpy==1.24.3
+networkx==3.6.1
+pymupdf==1.27.2.2
+
+# Development and testing (optional)
+requests==2.31.0
+
+# Optional: For production deployment
+# gunicorn==21.2.0  # Production WSGI server

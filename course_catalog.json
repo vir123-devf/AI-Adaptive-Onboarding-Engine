@@ -1,0 +1,544 @@
+{
+  "courses": [
+    {
+      "id": "py-fundamentals-01",
+      "title": "Python for Beginners",
+      "skills_covered": ["Python", "Variables", "Control Flow", "Functions"],
+      "prerequisites": [],
+      "duration_hours": 8,
+      "difficulty": "beginner",
+      "domain": "technical",
+      "url": "https://www.coursera.org/learn/python"
+    },
+    {
+      "id": "py-advanced-02",
+      "title": "Advanced Python Programming",
+      "skills_covered": ["Python", "OOP", "Decorators", "Generators", "Testing"],
+      "prerequisites": ["py-fundamentals-01"],
+      "duration_hours": 16,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://realpython.com/learning-paths/python-programming/"
+    },
+    {
+      "id": "js-fundamentals-01",
+      "title": "JavaScript Essentials",
+      "skills_covered": ["JavaScript", "DOM", "Events", "ES6", "Async Programming"],
+      "prerequisites": [],
+      "duration_hours": 12,
+      "difficulty": "beginner",
+      "domain": "technical",
+      "url": "https://www.udemy.com/course/the-complete-javascript-course/"
+    },
+    {
+      "id": "js-advanced-02",
+      "title": "Modern JavaScript & ES6+",
+      "skills_covered": ["JavaScript", "Promises", "Async/Await", "Arrow Functions", "Modules"],
+      "prerequisites": ["js-fundamentals-01"],
+      "duration_hours": 14,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://javascript.info/"
+    },
+    {
+      "id": "react-01",
+      "title": "React: Building User Interfaces",
+      "skills_covered": ["React", "JSX", "Components", "State Management", "Hooks"],
+      "prerequisites": ["js-fundamentals-01"],
+      "duration_hours": 20,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://react.dev/learn"
+    },
+    {
+      "id": "react-advanced-02",
+      "title": "Advanced React Patterns",
+      "skills_covered": ["React", "Redux", "Context API", "Performance Optimization", "Testing"],
+      "prerequisites": ["react-01"],
+      "duration_hours": 18,
+      "difficulty": "advanced",
+      "domain": "technical",
+      "url": "https://www.courses.epicreact.dev/"
+    },
+    {
+      "id": "vue-01",
+      "title": "Vue.js Fundamentals",
+      "skills_covered": ["Vue.js", "Components", "Directives", "State Management", "Vue Router"],
+      "prerequisites": ["js-fundamentals-01"],
+      "duration_hours": 16,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://vuejs.org/guide/"
+    },
+    {
+      "id": "angular-01",
+      "title": "Angular Masterclass",
+      "skills_covered": ["Angular", "TypeScript", "RxJS", "Dependency Injection", "CLI"],
+      "prerequisites": ["js-fundamentals-01", "ts-01"],
+      "duration_hours": 22,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://angular.io/guide/setup"
+    },
+    {
+      "id": "ts-01",
+      "title": "TypeScript Fundamentals",
+      "skills_covered": ["TypeScript", "Types", "Interfaces", "Generics", "Decorators"],
+      "prerequisites": ["js-fundamentals-01"],
+      "duration_hours": 14,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://www.typescriptlang.org/docs/"
+    },
+    {
+      "id": "node-01",
+      "title": "Node.js & Express.js",
+      "skills_covered": ["Node.js", "Express", "REST API", "Middleware", "Authentication"],
+      "prerequisites": ["js-fundamentals-01"],
+      "duration_hours": 18,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://www.udemy.com/course/nodejs-the-complete-guide/"
+    },
+    {
+      "id": "node-advanced-02",
+      "title": "Advanced Node.js & Backend Architecture",
+      "skills_covered": ["Node.js", "Microservices", "WebSockets", "Streaming", "Performance"],
+      "prerequisites": ["node-01"],
+      "duration_hours": 20,
+      "difficulty": "advanced",
+      "domain": "technical",
+      "url": "https://www.nodepractices.com/"
+    },
+    {
+      "id": "fastapi-01",
+      "title": "FastAPI Web Framework",
+      "skills_covered": ["FastAPI", "Async Python", "OpenAPI", "Pydantic", "Authentication"],
+      "prerequisites": ["py-fundamentals-01"],
+      "duration_hours": 16,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://fastapi.tiangolo.com/learn/"
+    },
+    {
+      "id": "django-01",
+      "title": "Django Web Development",
+      "skills_covered": ["Django", "ORM", "Templates", "Authentication", "Admin Panel"],
+      "prerequisites": ["py-fundamentals-01"],
+      "duration_hours": 20,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://docs.djangoproject.com/"
+    },
+    {
+      "id": "ml-fundamentals-01",
+      "title": "Machine Learning Fundamentals",
+      "skills_covered": ["Machine Learning", "Supervised Learning", "scikit-learn"],
+      "prerequisites": ["py-fundamentals-01"],
+      "duration_hours": 20,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://www.coursera.org/learn/machine-learning"
+    },
+    {
+      "id": "ml-advanced-02",
+      "title": "Deep Learning with TensorFlow",
+      "skills_covered": ["TensorFlow", "Neural Networks", "CNN", "RNN", "Keras"],
+      "prerequisites": ["ml-fundamentals-01"],
+      "duration_hours": 24,
+      "difficulty": "advanced",
+      "domain": "technical",
+      "url": "https://www.tensorflow.org/learn"
+    },
+    {
+      "id": "pytorch-01",
+      "title": "PyTorch for Deep Learning",
+      "skills_covered": ["PyTorch", "Neural Networks", "Computer Vision", "NLP", "Transformers"],
+      "prerequisites": ["ml-fundamentals-01"],
+      "duration_hours": 22,
+      "difficulty": "advanced",
+      "domain": "technical",
+      "url": "https://pytorch.org/tutorials/"
+    },
+    {
+      "id": "nlp-01",
+      "title": "Natural Language Processing",
+      "skills_covered": ["NLP", "Text Processing", "NLTK", "Transformers", "BERT"],
+      "prerequisites": ["ml-fundamentals-01"],
+      "duration_hours": 20,
+      "difficulty": "advanced",
+      "domain": "technical",
+      "url": "https://huggingface.co/learn"
+    },
+    {
+      "id": "cv-01",
+      "title": "Computer Vision Mastery",
+      "skills_covered": ["Computer Vision", "OpenCV", "Image Processing", "Object Detection"],
+      "prerequisites": ["ml-fundamentals-01"],
+      "duration_hours": 22,
+      "difficulty": "advanced",
+      "domain": "technical",
+      "url": "https://www.udemy.com/course/computer-vision-basics/"
+    },
+    {
+      "id": "data-science-01",
+      "title": "Data Science with Python",
+      "skills_covered": ["Pandas", "NumPy", "Data Analysis", "Visualization", "Statistics"],
+      "prerequisites": ["py-fundamentals-01"],
+      "duration_hours": 18,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://www.kaggle.com/learn/python"
+    },
+    {
+      "id": "sql-01",
+      "title": "SQL & Database Management",
+      "skills_covered": ["SQL", "Database Design", "Queries", "Indexes", "Optimization"],
+      "prerequisites": [],
+      "duration_hours": 14,
+      "difficulty": "beginner",
+      "domain": "technical",
+      "url": "https://www.udemy.com/course/the-complete-sql-bootcamp/"
+    },
+    {
+      "id": "advanced-sql-02",
+      "title": "Advanced SQL & Performance Tuning",
+      "skills_covered": ["SQL", "Window Functions", "CTEs", "Query Optimization", "Replication"],
+      "prerequisites": ["sql-01"],
+      "duration_hours": 16,
+      "difficulty": "advanced",
+      "domain": "technical",
+      "url": "https://use-the-index-luke.com/"
+    },
+    {
+      "id": "postgres-01",
+      "title": "PostgreSQL Advanced Features",
+      "skills_covered": ["PostgreSQL", "JSON", "Full-Text Search", "Partitioning", "Extensions"],
+      "prerequisites": ["sql-01"],
+      "duration_hours": 14,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://www.postgresql.org/docs/current/sql.html"
+    },
+    {
+      "id": "mongodb-01",
+      "title": "MongoDB NoSQL Database",
+      "skills_covered": ["MongoDB", "NoSQL", "Aggregation", "Indexing", "Transactions"],
+      "prerequisites": [],
+      "duration_hours": 12,
+      "difficulty": "beginner",
+      "domain": "technical",
+      "url": "https://docs.mongodb.com/manual/"
+    },
+    {
+      "id": "redis-01",
+      "title": "Redis: In-Memory Data Store",
+      "skills_covered": ["Redis", "Caching", "Sessions", "Pub/Sub", "Transactions"],
+      "prerequisites": [],
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://redis.io/learn"
+    },
+    {
+      "id": "aws-fundamentals-01",
+      "title": "AWS Fundamentals",
+      "skills_covered": ["AWS", "EC2", "S3", "IAM", "VPC"],
+      "prerequisites": [],
+      "duration_hours": 16,
+      "difficulty": "beginner",
+      "domain": "cloud",
+      "url": "https://aws.amazon.com/training/"
+    },
+    {
+      "id": "aws-advanced-02",
+      "title": "AWS Solutions Architect",
+      "skills_covered": ["AWS", "Lambda", "RDS", "CloudFront", "Architecture Patterns"],
+      "prerequisites": ["aws-fundamentals-01"],
+      "duration_hours": 24,
+      "difficulty": "advanced",
+      "domain": "cloud",
+      "url": "https://www.aws.training/Details/eLearning?id=42682"
+    },
+    {
+      "id": "azure-01",
+      "title": "Microsoft Azure Fundamentals",
+      "skills_covered": ["Azure", "Virtual Machines", "App Service", "Storage", "Networking"],
+      "prerequisites": [],
+      "duration_hours": 16,
+      "difficulty": "beginner",
+      "domain": "cloud",
+      "url": "https://learn.microsoft.com/en-us/azure/"
+    },
+    {
+      "id": "gcp-01",
+      "title": "Google Cloud Platform Essentials",
+      "skills_covered": ["GCP", "Compute Engine", "Cloud Storage", "BigQuery", "Dataflow"],
+      "prerequisites": [],
+      "duration_hours": 14,
+      "difficulty": "beginner",
+      "domain": "cloud",
+      "url": "https://cloud.google.com/training"
+    },
+    {
+      "id": "docker-01",
+      "title": "Docker & Containerization",
+      "skills_covered": ["Docker", "Containers", "Images", "Compose", "Registry"],
+      "prerequisites": [],
+      "duration_hours": 12,
+      "difficulty": "intermediate",
+      "domain": "devops",
+      "url": "https://www.docker.com/blog/docker-101/"
+    },
+    {
+      "id": "kubernetes-01",
+      "title": "Kubernetes Essentials",
+      "skills_covered": ["Kubernetes", "Pods", "Services", "Deployments", "ConfigMaps"],
+      "prerequisites": ["docker-01"],
+      "duration_hours": 18,
+      "difficulty": "advanced",
+      "domain": "devops",
+      "url": "https://kubernetes.io/docs/tutorials/"
+    },
+    {
+      "id": "ci-cd-01",
+      "title": "CI/CD Pipelines with Jenkins",
+      "skills_covered": ["Jenkins", "CI/CD", "Automation", "Pipeline", "Testing"],
+      "prerequisites": [],
+      "duration_hours": 14,
+      "difficulty": "intermediate",
+      "domain": "devops",
+      "url": "https://www.jenkins.io/doc/"
+    },
+    {
+      "id": "github-actions-01",
+      "title": "GitHub Actions & Automation",
+      "skills_covered": ["GitHub Actions", "Workflows", "Automation", "CI/CD", "Deployment"],
+      "prerequisites": [],
+      "duration_hours": 10,
+      "difficulty": "beginner",
+      "domain": "devops",
+      "url": "https://docs.github.com/en/actions"
+    },
+    {
+      "id": "terraform-01",
+      "title": "Infrastructure as Code with Terraform",
+      "skills_covered": ["Terraform", "IaC", "Cloud Infrastructure", "Modules", "State"],
+      "prerequisites": [],
+      "duration_hours": 16,
+      "difficulty": "intermediate",
+      "domain": "devops",
+      "url": "https://www.terraform.io/language"
+    },
+    {
+      "id": "ansible-01",
+      "title": "Ansible Configuration Management",
+      "skills_covered": ["Ansible", "Playbooks", "Roles", "Automation", "Configuration"],
+      "prerequisites": [],
+      "duration_hours": 12,
+      "difficulty": "intermediate",
+      "domain": "devops",
+      "url": "https://docs.ansible.com/"
+    },
+    {
+      "id": "git-01",
+      "title": "Git & Version Control",
+      "skills_covered": ["Git", "GitHub", "GitLab", "Branching", "Merging"],
+      "prerequisites": [],
+      "duration_hours": 8,
+      "difficulty": "beginner",
+      "domain": "technical",
+      "url": "https://git-scm.com/book/en/v2"
+    },
+    {
+      "id": "security-01",
+      "title": "Web Security Fundamentals",
+      "skills_covered": ["Security", "OWASP", "Encryption", "Authentication", "Authorization"],
+      "prerequisites": [],
+      "duration_hours": 14,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://owasp.org/www-project-top-ten/"
+    },
+    {
+      "id": "cybersecurity-01",
+      "title": "Cybersecurity Essentials",
+      "skills_covered": ["Cybersecurity", "Network Security", "Penetration Testing", "Firewalls"],
+      "prerequisites": [],
+      "duration_hours": 20,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://www.coursera.org/learn/cyber-security"
+    },
+    {
+      "id": "api-design-01",
+      "title": "RESTful API Design Best Practices",
+      "skills_covered": ["REST API", "API Design", "OpenAPI", "Versioning", "Documentation"],
+      "prerequisites": ["js-fundamentals-01"],
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://restfulapi.net/"
+    },
+    {
+      "id": "graphql-01",
+      "title": "GraphQL Essentials",
+      "skills_covered": ["GraphQL", "Queries", "Mutations", "Subscriptions", "Apollo"],
+      "prerequisites": ["node-01"],
+      "duration_hours": 12,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://graphql.org/learn/"
+    },
+    {
+      "id": "web-performance-01",
+      "title": "Web Performance Optimization",
+      "skills_covered": ["Performance", "Caching", "Compression", "CDN", "Monitoring"],
+      "prerequisites": [],
+      "duration_hours": 12,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://web.dev/performance/"
+    },
+    {
+      "id": "search-engines-01",
+      "title": "Search Engines & Elasticsearch",
+      "skills_covered": ["Elasticsearch", "Lucene", "Full-Text Search", "Indexing", "Queries"],
+      "prerequisites": [],
+      "duration_hours": 14,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html"
+    },
+    {
+      "id": "microservices-01",
+      "title": "Microservices Architecture",
+      "skills_covered": ["Microservices", "Service Discovery", "API Gateway", "Distributed Systems"],
+      "prerequisites": ["node-01"],
+      "duration_hours": 18,
+      "difficulty": "advanced",
+      "domain": "technical",
+      "url": "https://microservices.io/"
+    },
+    {
+      "id": "testing-01",
+      "title": "Software Testing & QA",
+      "skills_covered": ["Testing", "Unit Testing", "Integration Testing", "Automation", "pytest"],
+      "prerequisites": [],
+      "duration_hours": 12,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://testautomationu.applitools.com/"
+    },
+    {
+      "id": "mobile-ios-01",
+      "title": "iOS Development with Swift",
+      "skills_covered": ["Swift", "iOS", "UIKit", "SwiftUI", "Xcode"],
+      "prerequisites": [],
+      "duration_hours": 24,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://developer.apple.com/swift/resources/"
+    },
+    {
+      "id": "mobile-android-01",
+      "title": "Android Development with Kotlin",
+      "skills_covered": ["Kotlin", "Android", "Jetpack", "Architecture", "Testing"],
+      "prerequisites": [],
+      "duration_hours": 22,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://developer.android.com/docs"
+    },
+    {
+      "id": "flutter-01",
+      "title": "Flutter Cross-Platform Development",
+      "skills_covered": ["Flutter", "Dart", "Widgets", "State Management", "Firebase"],
+      "prerequisites": [],
+      "duration_hours": 20,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://flutter.dev/docs"
+    },
+    {
+      "id": "ux-design-01",
+      "title": "UX/UI Design Fundamentals",
+      "skills_covered": ["UI Design", "UX Research", "Prototyping", "Figma", "Design Thinking"],
+      "prerequisites": [],
+      "duration_hours": 16,
+      "difficulty": "beginner",
+      "domain": "design",
+      "url": "https://www.interaction-design.org/"
+    },
+    {
+      "id": "css-01",
+      "title": "CSS Advanced Styling",
+      "skills_covered": ["CSS", "Flexbox", "Grid", "Animations", "SASS"],
+      "prerequisites": [],
+      "duration_hours": 12,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://css-tricks.com/complete-guide-grid/"
+    },
+    {
+      "id": "html5-01",
+      "title": "HTML5 & Semantic Web",
+      "skills_covered": ["HTML5", "Semantics", "Accessibility", "Forms", "Metadata"],
+      "prerequisites": [],
+      "duration_hours": 8,
+      "difficulty": "beginner",
+      "domain": "technical",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+    },
+    {
+      "id": "webpack-01",
+      "title": "Webpack & Module Bundling",
+      "skills_covered": ["Webpack", "Bundling", "Loaders", "Plugins", "Performance"],
+      "prerequisites": ["js-fundamentals-01"],
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "domain": "technical",
+      "url": "https://webpack.js.org/guides/"
+    },
+    {
+      "id": "agile-01",
+      "title": "Agile & Scrum Methodology",
+      "skills_covered": ["Agile", "Scrum", "Kanban", "Sprint Planning", "Retrospectives"],
+      "prerequisites": [],
+      "duration_hours": 8,
+      "difficulty": "beginner",
+      "domain": "operational",
+      "url": "https://www.scrum.org/resources/scrum-guide"
+    },
+    {
+      "id": "project-mgmt-01",
+      "title": "Project Management Essentials",
+      "skills_covered": ["Project Management", "Planning", "Stakeholder Communication", "Risk Management"],
+      "prerequisites": [],
+      "duration_hours": 12,
+      "difficulty": "beginner",
+      "domain": "operational",
+      "url": "https://www.pmi.org/learning/courses"
+    },
+    {
+      "id": "leadership-01",
+      "title": "Technical Leadership",
+      "skills_covered": ["Leadership", "Team Management", "Decision Making", "Communication"],
+      "prerequisites": [],
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "domain": "operational",
+      "url": "https://www.coursera.org/learn/leadership"
+    },
+    {
+      "id": "communication-01",
+      "title": "Technical Communication",
+      "skills_covered": ["Communication", "Documentation", "Presentation", "Writing"],
+      "prerequisites": [],
+      "duration_hours": 8,
+      "difficulty": "beginner",
+      "domain": "operational",
+      "url": "https://www.coursera.org/learn/technical-writing"
+    }
+  ]
+}
