@@ -79,7 +79,7 @@ pip install -r requirements.txt
 ### 3. Configure Environment
 Create/update `.env` file:
 ```
-ANTHROPIC_API_KEY=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
+ANTHROPIC_API_KEY= your_api_key
 HOST=0.0.0.0
 PORT=8000
 DEBUG=False
